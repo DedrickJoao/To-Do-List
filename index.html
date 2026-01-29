@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="welcomeMessage">Bien Venido Dédick</h1>
+         <p class="motivation">Vamos a hacer una lista de tareas y te ayudaré a organizarlas y terminarlas.</p>
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button onclick="addTask()">Add Task</button>
+        
+        <div class="columns">
+            <div>
+                <h3>Pendente </h3>
+            <ul id="pending"></ul>
+            </div>
+
+            <div>
+                <h3> Em progresso</h3>
+                <ul id="progress"></ul>
+            </div>
+
+            <div>
+                <h3> Completo</h3>
+                <ul id="completed"></ul>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
