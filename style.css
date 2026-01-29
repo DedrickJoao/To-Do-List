@@ -42,6 +42,8 @@ li {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    gap: 8px;
+    align-items: center;
 }
 
 .columns {

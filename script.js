@@ -43,13 +43,18 @@ function renderTasks() {
         li.className = getClass(task.status);
 
         li.innerHTML = `
-            ${task.text}
-            <select onchange="changeStatus(${index}, this.value)">
-                <option ${task.status === "Pending" ? "selected" : ""}>Pending</option>
-                <option ${task.status === "In Progress" ? "selected" : ""}>In Progress</option>
-                <option ${task.status === "Completed" ? "selected" : ""}>Completed</option>
-            </select>
-        `;
+    <span>${task.text}</span>
+
+    <select onchange="changeStatus(${index}, this.value)">
+        <option ${task.status === "Pending" ? "selected" : ""}>Pending</option>
+        <option ${task.status === "In Progress" ? "selected" : ""}>In Progress</option>
+        <option ${task.status === "Completed" ? "selected" : ""}>Completed</option>
+    </select>
+
+    <button onclick="editTask(${index})">✏️</button>
+    <button onclick="deleteTask(${index})">🗑️</button>
+`;
+
 
         document.getElementById(getColumn(task.status)).appendChild(li);
     });
@@ -66,6 +71,22 @@ function getClass(status) {
     if (status == "Pending") return "pending";
     if (status == "In Progress") return "progress";
     return "completed";
+}
+
+// Apagar Tarefa
+function deleteTask(index) {
+    if (!confirm("Tem certeza que queres apagar esta tarefa?")) return;
+    tasks.splice(index, 1);
+    saveAndRender();
+}
+
+//Editar Tarefa
+function editTask(index) {
+    const newText = prompt("Editar tarefa:", tasks[index].text);
+    if (newText === null || newText.trim() === "") return;
+
+    tasks[index].text = newText.trim();
+    saveAndRender();
 }
 
    
